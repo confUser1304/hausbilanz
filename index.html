@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hausbilanz</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>💰 Hausbilanz</h1>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="transactions">Buchungen</button>
+    <button class="tab" data-tab="add">+ Neue Buchung</button>
+    <button class="tab" data-tab="settings">Einstellungen</button>
+  </div>
+
+  <section id="dashboard" class="tab-content active">
+    <h2>Monatsübersicht</h2>
+    <div id="balance-summary"></div>
+    <div id="dispo-warning"></div>
+  </section>
+
+  <section id="transactions" class="tab-content">
+    <h2>Letzte Buchungen</h2>
+    <div id="transaction-list"></div>
+  </section>
+
+  <section id="add" class="tab-content">
+    <h2>Neue Buchung</h2>
+    <form id="transaction-form">
+      <select id="account" required></select>
+      <input type="number" id="amount" placeholder="Betrag" step="0.01" required>
+      <select id="type" required><option value="expense">Ausgabe</option><option value="income">Einnahme</option></select>
+      <select id="category" required></select>
+      <input type="date" id="date" required>
+      <input type="text" id="note" placeholder="Notiz">
+      <button type="submit">Speichern</button>
+    </form>
+  </section>
+
+  <section id="settings" class="tab-content">
+    <h2>Personen & Limits</h2>
+    <div id="persons-settings"></div>
+    <h3>Kategorien</h3>
+    <input type="text" id="new-category" placeholder="Neue Kategorie">
+    <button id="add-category">Hinzufügen</button>
+    <ul id="category-list"></ul>
+    <h3>Daten importieren</h3>
+    <textarea id="import-json" placeholder="JSON‑Text hier einfügen …"></textarea>
+    <button id="import-btn">Importieren</button>
+    <h3>Export / Backup</h3>
+    <button id="export-btn">Daten exportieren</button>
+  </section>
+
+  <button id="voice-btn" class="voice-button">🎤</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
